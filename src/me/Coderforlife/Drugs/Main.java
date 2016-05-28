@@ -3,8 +3,6 @@ package me.Coderforlife.Drugs;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -43,26 +41,6 @@ public class Main extends JavaPlugin {
 		 */
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-	}
-
-	public boolean onCommand(CommandSender sender, Command command, String Commandlabel, String[] args) {
-		if (command.getName().equalsIgnoreCase("drugs")) {
-			if (args[0].equalsIgnoreCase("reload")) {
-				try {
-					if (sender.hasPermission("drugs.reload")) {
-						sender.sendMessage(ChatColor.GREEN + "Reloading config...");
-						reloadConfig();
-						sender.sendMessage(ChatColor.GREEN + "Reloaded Config");
-					} else {
-						sender.sendMessage(perm);
-					}
-				} catch (Exception e) {
-					sender.sendMessage(ChatColor.RED + "Error: " + ChatColor.WHITE + "Config failed to load.");
-					e.printStackTrace();
-				}
-			}
-		}
-		return true;
 	}
 	
 	public void onDisable() {

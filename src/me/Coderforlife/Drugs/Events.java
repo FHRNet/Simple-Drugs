@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.MainHand;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -33,10 +32,17 @@ public class Events implements Listener {
 		Player p = e.getPlayer();
 		Action a = e.getAction();
 		ItemStack i = p.getInventory().getItemInMainHand();
+		int amount = i.getAmount();
 		
         if (a == Action.RIGHT_CLICK_AIR && i.getType() == m) {
             e.setCancelled(true);
-            i.setAmount(i.getAmount() - 1);
+            
+            if (amount > 1) {
+            	i.setAmount(amount - 1);
+            } else {
+            	p.getInventory().setItemInMainHand(null);
+            }
+            
             return true;
         }
 		return false;

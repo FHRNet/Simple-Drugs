@@ -82,7 +82,7 @@ public class KillerCommands implements CommandExecutor {
 				} else {
 					sender.sendMessage("Only players may use this command.");
 				}
-			} else if (args[0].equalsIgnoreCase("help")) {
+			} else {
 				if (sender.hasPermission("drugs.help")) {
 					sender.sendMessage(prefix);
 					sender.sendMessage(this.dash + ChatColor.GREEN + "Wheat " + ChatColor.WHITE + "(Weed)"
