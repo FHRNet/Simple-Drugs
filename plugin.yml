@@ -1,26 +1,12 @@
 name: SimpleDrugs
-version: 2.5.7
-authors: [xxCoderforlife]
+version: 3.0.0
+authors: [xxCoderforlife,FHR]
 main: me.Coderforlife.Drugs.Main
 commands:
     drugs:
         description: For Drugs yo
-        usage: /<command>
-        aliases: [d]
-    help:
-        description: Drugs Help
-        aliases: [h]
-    remove:
-        description: Remove all Drugs
-        aliases: [r]
-    changelog:
-        description: ChangeLog for SimpleDrugs
-        aliases: [change,log,c]
-    dreload:
-        description: Reload for SimpleDrugs
-        aliases: [re,l,load]
-        
-permissons:
+        usage: /drugs <command>
+permissions:
     drugs.*:
      children:
       drugs.wheat: true
@@ -30,8 +16,17 @@ permissons:
       drugs.bone: true
       drugs.remove: true
       drugs.main: true
-      drugs.changelog: true	  
+      drugs.changelog: true
       drugs.reload: true
+    drugs.playercmds:
+     children:
+      drugs.main: true
+      drugs.wheat: true
+      drugs.sugar: true
+      drugs.paper: true
+      drugs.gun: true
+      drugs.bone: true
+      drugs.remove: true
     drugs.wheat:
         default: true
     drugs.sugar:
