@@ -22,6 +22,7 @@ public class Main extends JavaPlugin {
 		String paper = "Drugs.Toggle.paper";
 		String gunp = "Drugs.Toggle.gunpowder";
 		String bone = "Drugs.Toggle.bone";
+		String mushroom = "Drugs.Toggle.mushroom";
 		String effect = "Drugs.Effect.length";
 		String console = "Drugs.Console.logs";
 		/*
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin {
 		getConfig().addDefault(paper, true);
 		getConfig().addDefault(gunp, true);
 		getConfig().addDefault(bone, true);
+		getConfig().addDefault(mushroom, true);
 		getConfig().addDefault(effect, 5220);
 		getConfig().addDefault(console, true);
 		/*

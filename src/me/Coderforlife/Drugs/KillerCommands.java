@@ -23,7 +23,7 @@ public class KillerCommands implements CommandExecutor {
 		return this.plugin;
 	}
 
-	public final String prefix = ChatColor.RED + "==============" + ChatColor.AQUA + "[Simple Drugs v3.0.0]"
+	public final String prefix = ChatColor.RED + "==============" + ChatColor.AQUA + "[Simple Drugs v3.0.1]"
 			+ ChatColor.RED + "==============";
 	final String dash = ChatColor.GRAY + "- ";
 	final String dash1 = ChatColor.GOLD + "- " + ChatColor.GRAY;
@@ -96,6 +96,8 @@ public class KillerCommands implements CommandExecutor {
 							+ "Jump Boost,Health Regeneration,Speed Boost,Confusion");
 					sender.sendMessage(this.dash + ChatColor.GREEN + "Bone " + ChatColor.WHITE + "(Angel Dust)"
 							+ ChatColor.GRAY + " Effects: " + ChatColor.AQUA + "Speed Boost,Confusion");
+					sender.sendMessage(this.dash + ChatColor.GREEN + "Red Mushroom " + ChatColor.WHITE + "(\'Shrooms)"
+							+ ChatColor.GRAY + " Effects: " + ChatColor.AQUA + "Hunger,Strength,Confusion");
 				} else {
 					sender.sendMessage(this.perm);
 				}

@@ -1,5 +1,5 @@
 name: SimpleDrugs
-version: 3.0.0
+version: 3.0.1
 authors: [xxCoderforlife,FHR]
 main: me.Coderforlife.Drugs.Main
 commands:
@@ -14,6 +14,7 @@ permissions:
       drugs.paper: true
       drugs.gun: true
       drugs.bone: true
+      drugs.mushroom: true
       drugs.remove: true
       drugs.main: true
       drugs.changelog: true
@@ -26,6 +27,7 @@ permissions:
       drugs.paper: true
       drugs.gun: true
       drugs.bone: true
+      drugs.mushroom: true
       drugs.remove: true
     drugs.wheat:
         default: true
@@ -41,6 +43,8 @@ permissions:
         default: true
     drugs.main:
         default: true
+    drugs.mushroom:
+	default: true
     drugs.changelog:
         default: op
     drugs.reload:

@@ -136,5 +136,21 @@ public class Events implements Listener {
 			
 			logUsage(p, "just smoked");
 		}
+		
+		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.mushroom")) && (p.hasPermission("drugs.mushroom"))
+				&& useDrug(e, Material.RED_MUSHROOM)) {
+			p.addPotionEffect(
+					new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+					true);
+			p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
+					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+			p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER,
+					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+			p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,
+					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+			p.sendMessage(ChatColor.GREEN + "\'Shrooms!");
+			
+			logUsage(p, "just smoked");
+		}
 	}
 }
