@@ -40,7 +40,6 @@ public class KillerCommands implements CommandExecutor {
 					sender.sendMessage(ChatColor.RED + "Use the the sub commands listed below:");
 					sender.sendMessage(ChatColor.RED + "/" + ChatColor.WHITE + "drugs help");
 					sender.sendMessage(ChatColor.RED + "/" + ChatColor.WHITE + "drugs remove");
-					sender.sendMessage(ChatColor.RED + "/" + ChatColor.WHITE + "drugs reload");
 				} else {
 					sender.sendMessage(this.perm);
 				}
