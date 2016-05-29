@@ -44,7 +44,7 @@ permissions:
     drugs.main:
         default: true
     drugs.mushroom:
-	default: true
+        default: true
     drugs.changelog:
         default: op
     drugs.reload:
