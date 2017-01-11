@@ -35,7 +35,7 @@ public class Main extends JavaPlugin {
 		getConfig().addDefault(gunp, true);
 		getConfig().addDefault(bone, true);
 		getConfig().addDefault(mushroom, true);
-		getConfig().addDefault(effect, 5220);
+		getConfig().addDefault(effect, 1600);
 		getConfig().addDefault(console, true);
 		/*
 		 * getConfig().addDefault(remove, true); getConfig().addDefault(sound,

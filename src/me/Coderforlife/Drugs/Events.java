@@ -34,6 +34,8 @@ public class Events implements Listener {
 		ItemStack i = p.getInventory().getItemInMainHand();
 		int amount = i.getAmount();
 		
+		Logger.getLogger("Amount: " + amount);
+		
         if (a == Action.RIGHT_CLICK_AIR && i.getType() == m) {
             e.setCancelled(true);
             
@@ -57,100 +59,103 @@ public class Events implements Listener {
 	@EventHandler
 	public void onRightClick(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.wheat")) && (p.hasPermission("drugs.wheat"))
-				&& useDrug(e, Material.WHEAT)) {
-			p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.GREEN + "Like that Weed?");
-			
-			logUsage(p, "used weed");
-		}
 		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.sugar")) && (p.hasPermission("drugs.sugar"))
-				&& useDrug(e, Material.SUGAR)) {
-			p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.AQUA + "You just hit Cocaine!");
-			
-			logUsage(p, "used cocaine");
-		}
+		if(p.isSneaking()) {
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.wheat")) && (p.hasPermission("drugs.wheat"))
+					&& useDrug(e, Material.WHEAT)) {
+				p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.GREEN + "Like that Weed?");
 		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.paper")) && (p.hasPermission("drugs.paper"))
-				&& useDrug(e, Material.PAPER)) {
-			p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.sendMessage(ChatColor.AQUA + "You just hit Acid!");
-			
-			logUsage(p, "used Acid");
-		}
+				logUsage(p, "used weed");
+			}
 		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.gunpowder")) && (p.hasPermission("drugs.gun"))
-				&& useDrug(e, Material.SULPHUR)) {
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.AQUA + "PowPow!!!");
-
-			logUsage(p, "used PowPow");
-		}
-		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.bone")) && (p.hasPermission("drugs.bone"))
-				&& useDrug(e, Material.BONE)) {
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.AQUA + "Angel Dust!");
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.sugar")) && (p.hasPermission("drugs.sugar"))
+					&& useDrug(e, Material.SUGAR)) {
+				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.AQUA + "You just hit Cocaine!");
+				
+				logUsage(p, "used cocaine");
+			}
 			
-			logUsage(p, "used Angel Dust");
-		}
-		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.smoke")) && (p.hasPermission("drugs.smoke"))
-				&& useDrug(e, Material.TORCH)) {
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.GREEN + "Smoking Yeah " + ChatColor.RED + " <3");
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.paper")) && (p.hasPermission("drugs.paper"))
+					&& useDrug(e, Material.PAPER)) {
+				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.sendMessage(ChatColor.AQUA + "You just hit Acid!");
+				
+				logUsage(p, "used Acid");
+			}
 			
-			logUsage(p, "just smoked");
-		}
-		
-		if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.mushroom")) && (p.hasPermission("drugs.mushroom"))
-				&& useDrug(e, Material.RED_MUSHROOM)) {
-			p.addPotionEffect(
-					new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
-					true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,
-					this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
-			p.sendMessage(ChatColor.GREEN + "\'Shrooms!");
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.gunpowder")) && (p.hasPermission("drugs.gun"))
+					&& useDrug(e, Material.SULPHUR)) {
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.AQUA + "PowPow!!!");
+	
+				logUsage(p, "used PowPow");
+			}
 			
-			logUsage(p, "just smoked");
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.bone")) && (p.hasPermission("drugs.bone"))
+					&& useDrug(e, Material.BONE)) {
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.JUMP, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.AQUA + "Angel Dust!");
+				
+				logUsage(p, "used Angel Dust");
+			}
+			
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.smoke")) && (p.hasPermission("drugs.smoke"))
+					&& useDrug(e, Material.TORCH)) {
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.GREEN + "Smoking Yeah " + ChatColor.RED + " <3");
+				
+				logUsage(p, "just smoked");
+			}
+			
+			if ((this.plugin.getConfig().getBoolean("Drugs.Toggle.mushroom")) && (p.hasPermission("drugs.mushroom"))
+					&& useDrug(e, Material.RED_MUSHROOM)) {
+				p.addPotionEffect(
+						new PotionEffect(PotionEffectType.SPEED, this.plugin.getConfig().getInt("Drugs.Effect.length"), 1),
+						true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,
+						this.plugin.getConfig().getInt("Drugs.Effect.length"), 1), true);
+				p.sendMessage(ChatColor.GREEN + "\'Shrooms!");
+				
+				logUsage(p, "just smoked");
+			}
 		}
 	}
 }
